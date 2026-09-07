@@ -1,0 +1,3 @@
+export declare const SendToWalletCardHeader: import("@emotion/styled").StyledComponent<import("@mui/material").CardHeaderOwnProps<"span", "span"> & import("@mui/material").CardHeaderSlotsAndSlotProps & import("@mui/material/OverridableComponent").CommonProps & Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "sx" | "style" | "title" | "className" | "classes" | "action" | "slots" | "slotProps" | "avatar" | "disableTypography" | "subheader" | "subheaderTypographyProps" | "titleTypographyProps"> & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme> & {
+    selected?: boolean;
+}, {}, {}>;

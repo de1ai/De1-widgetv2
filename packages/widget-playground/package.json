@@ -1,0 +1,71 @@
+{
+  "name": "@de1/widget-playground",
+  "version": "1.0.1",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "build": "pnpm clean && pnpm build:esm && pnpm build:fonts && pnpm build:clean",
+    "build:esm": "tsc --build",
+    "build:fonts": "cpy 'src/fonts/*' dist/fonts",
+    "build:clean": "rm -rf tsconfig.tsbuildinfo ./dist/tsconfig.tsbuildinfo",
+    "clean": "pnpm build:clean && rm -rf dist",
+    "types": "tsc --noEmit",
+    "check:types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "link:bigmi": "pnpm link --global @bigmi/client",
+    "unlink:bigmi": "pnpm link --global @bigmi/client",
+    "link:sdk": "pnpm link --global @de1/sdk",
+    "unlink:sdk": "pnpm unlink --global @de1/sdk",
+    "check:circular-deps": "madge --circular $(find ./src -name '*.ts' -o -name '*.tsx')",
+    "check:circular-deps-graph": "madge --circular $(find ./src -name '*.ts' -o -name '*.tsx') --image graph.svg"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./fonts": "./src/fonts/inter.css",
+    "./widget-config": "./src/defaultWidgetConfig.ts"
+  },
+  "dependencies": {
+    "@bigmi/react": "^0.1.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@de1/widget-sdk": "workspace:*",
+    "@de1/wallet-management": "workspace:*",
+    "@de1/widget": "workspace:*",
+    "@monaco-editor/react": "^4.7.0",
+    "@mui/icons-material": "6.0.2",
+    "@mui/lab": "6.0.0-beta.31",
+    "@mui/material": "^6.4.8",
+    "@mui/system": "^6.4.8",
+    "@rainbow-me/rainbowkit": "^2.2.4",
+    "@solana/wallet-adapter-base": "^0.9.24",
+    "@solana/wallet-adapter-react": "^0.15.36",
+    "@solana/web3.js": "^1.98.0",
+    "csstype": "^3.1.3",
+    "lodash.isequal": "^4.5.0",
+    "microdiff": "^1.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.0",
+    "viem": "^2.40.3",
+    "wagmi": "^2.14.15",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.8",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.11",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "cpy-cli": "^5.0.0",
+    "madge": "^8.0.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2",
+    "vitest": "^3.0.9"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.62.10"
+  },
+  "private": true
+}

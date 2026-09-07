@@ -1,0 +1,1 @@
+{"version":3,"file":"useServerErrorStore.js","sourceRoot":"","sources":["../../../src/stores/useServerErrorStore.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,SAAS,CAAA;AAEhC,MAAM,CAAC,MAAM,mBAAmB,GAAG,MAAM,CAGtC,CAAC,GAAG,EAAE,EAAE,CAAC,CAAC;IACX,KAAK,EAAE,IAAI;IACX,QAAQ,EAAE,CAAC,GAAG,EAAE,EAAE,CAAC,GAAG,CAAC,EAAE,KAAK,EAAE,GAAG,EAAE,CAAC;CACvC,CAAC,CAAC,CAAA"}

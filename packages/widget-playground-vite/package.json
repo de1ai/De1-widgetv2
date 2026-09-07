@@ -1,0 +1,56 @@
+{
+  "name": "@de1/widget-playground-vite",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "analyze": "source-map-explorer 'dist/assets/*.js' --no-border-checks",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:skip-ts": "vite build",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "preview": "vite preview",
+    "check:types": "tsc --noEmit"
+  },
+  "author": "Eugene Chybisov <@de1.exchange>",
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.8",
+    "@mui/system": "^6.4.8",
+    "@de1/widget": "workspace:*",
+    "@de1/widget-playground": "workspace:*",
+    "@de1/widget-sdk": "workspace:*",
+    "@tanstack/react-query": "^5.68.0",
+    "axios": "^1.13.2",
+    "buffer": "^6.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.0"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "source-map-explorer": "^2.5.3",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.2",
+    "vite-plugin-node-polyfills": "0.23.0",
+    "web-vitals": "^4.2.4"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "last 2 versions",
+      "not dead",
+      "not IE > 0",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "private": true
+}

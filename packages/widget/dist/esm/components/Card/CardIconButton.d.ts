@@ -1,0 +1,4 @@
+import type { LinkProps } from '@mui/material';
+export declare const CardIconButton: import("@emotion/styled").StyledComponent<import("@mui/material").IconButtonOwnProps & Omit<import("@mui/material").ButtonBaseOwnProps, "classes"> & import("@mui/material/OverridableComponent").CommonProps & Omit<import("react").DetailedHTMLProps<import("react").ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "color" | "children" | "sx" | "style" | "className" | "tabIndex" | "size" | "disabled" | "classes" | "action" | "loading" | "loadingIndicator" | "centerRipple" | "disableRipple" | "disableTouchRipple" | "focusRipple" | "focusVisibleClassName" | "LinkComponent" | "onFocusVisible" | "TouchRippleProps" | "touchRippleRef" | "disableFocusRipple" | "edge"> & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme> & {
+    component?: React.ElementType;
+} & Pick<LinkProps, "rel" | "target" | "href">, {}, {}>;

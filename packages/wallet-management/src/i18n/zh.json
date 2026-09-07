@@ -1,0 +1,14 @@
+{
+  "title": {
+    "connectWallet": "连接钱包",
+    "connecting": "正在连接",
+    "selectEcosystem": "选择链生态",
+    "waitingForWallet": "等待 {{walletName}} 连接",
+    "availableWalletsNotFound": "找不到可用的钱包"
+  },
+  "message": {
+    "connecting": "请在弹出的钱包窗口中点击连接。没有看到您的钱包？请检查浏览器的其他窗口。",
+    "multipleEcosystems": "{{walletName}} 支持多种链生态。请选择您要连接的链生态。",
+    "availableWalletsNotFound": "未检测到兼容的钱包，请安装可用钱包并刷新页面。如果已经安装，请确认钱包已启用且与本页面兼容，或联系客服。"
+  }
+}

@@ -1,0 +1,43 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.nuxt
+dist/
+!packages/widget/dist/
+build/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+*.tmp
+
+npm-debug.log*
+
+.next
+.cache
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# vercel
+.vercel
+
+# nuxt
+/.nuxt/
+/.output/
+/doc
+
+
+/examples/privy-swap-sample
+/pnpm-lock.yaml

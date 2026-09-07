@@ -1,0 +1,65 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useStopwatch } from '../../hooks/timer/useStopwatch.js';
+import { useSettings } from '../../stores/settings/useSettings.js';
+import { formatTimer } from '../../utils/timer.js';
+import { TimerContent } from './TimerContent.js';
+const getFirstExecutionProcess = (step) => step.execution?.process.at(0);
+const getExecutionProcess = (step) => step.execution?.process.at(-1);
+const getStartTimestamp = (step) => new Date(getFirstExecutionProcess(step)?.startedAt ?? Date.now());
+export const StepTimer = ({ step }) => {
+    const { i18n } = useTranslation();
+    const { language } = useSettings(['language']);
+    const [isExecutionStarted, setExecutionStarted] = useState(() => !!getExecutionProcess(step));
+    const { seconds, minutes, days, hours, isRunning, pause, reset, start } = useStopwatch({
+        autoStart: true,
+        offsetTimestamp: getStartTimestamp(step),
+    });
+    useEffect(() => {
+        const executionProcess = getExecutionProcess(step);
+        if (!executionProcess) {
+            return;
+        }
+        const shouldRestart = executionProcess.status === 'FAILED' || executionProcess.status === 'DONE';
+        const shouldStart = executionProcess.status === 'STARTED' ||
+            executionProcess.status === 'PENDING';
+        const shouldResume = executionProcess.status === 'PENDING';
+        if (isExecutionStarted && shouldRestart) {
+            setExecutionStarted(false);
+            pause();
+            return;
+        }
+        if (isExecutionStarted && !isRunning && shouldResume) {
+            start();
+            return;
+        }
+        if (!isExecutionStarted && shouldStart) {
+            setExecutionStarted(true);
+            reset();
+            return;
+        }
+    }, [isExecutionStarted, isRunning, pause, reset, start, step]);
+    if (step.execution?.status === 'DONE') {
+        return null;
+    }
+    if (!isExecutionStarted) {
+        const showSeconds = step.estimate.executionDuration < 60;
+        const duration = showSeconds
+            ? Math.floor(step.estimate.executionDuration)
+            : Math.floor(step.estimate.executionDuration / 60);
+        return (_jsx(TimerContent, { children: duration.toLocaleString(i18n.language, {
+                style: 'unit',
+                unit: showSeconds ? 'second' : 'minute',
+                unitDisplay: 'narrow',
+            }) }));
+    }
+    return (_jsx(TimerContent, { children: formatTimer({
+            locale: language,
+            days,
+            hours,
+            minutes,
+            seconds,
+        }) }));
+};
+//# sourceMappingURL=StepTimer.js.map

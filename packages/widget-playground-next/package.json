@@ -1,0 +1,32 @@
+{
+  "name": "@de1/widget-playground-next",
+  "version": "1.0.230",
+  "scripts": {
+    "analyze": "source-map-explorer '.next/static/chunks/**.js' --no-border-checks",
+    "dev": "next dev -p 3001 --turbo",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@de1/widget": "workspace:*",
+    "@de1/widget-playground": "workspace:*",
+    "@mui/material": "^6.4.8",
+    "@mui/material-nextjs": "^6.4.3",
+    "@mui/system": "^6.4.8",
+    "@tanstack/react-query": "^5.68.0",
+    "core-js": "^3.41.0",
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.11",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2"
+  },
+  "private": true
+}

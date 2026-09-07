@@ -1,0 +1,12 @@
+---
+alwaysApply: false
+---
+# Near 执行与余额查询说明
+
+- `ExecuteRoute.ts` 只做**纯逻辑函数**，不能直接调用 React Hooks。与 Near 钱包相关的 Hook（`useWalletSelector`）只能在 React 组件或自定义 Hook（例如 `[hooks/useRouteExecution.ts](mdc:packages/widget/src/hooks/useRouteExecution.ts)`）中调用，然后通过参数传递给执行函数。
+- Near 链的跨链执行走 `[cross/adapters/NearIntentsAdapter.ts](mdc:packages/widget/src/cross/adapters/NearIntentsAdapter.ts)`，由 `bridgeExecuteSwap` 间接调用：
+  - `ExecuteRoute.executeNearSwap` → `bridgeExecuteSwap({ quoteData, walletClient, nearWallet })`
+  - `bridgeExecuteSwap` → `CrossChainSwapFactory.getAdapterByName(...)` → `NearIntentsAdapter.executeSwap(quote, walletClient, nearWallet)`
+- Near 余额查询使用 SDK Provider `[core/Near.ts](mdc:packages/widget-sdk/src/core/Near.ts)` 的 `Near().getBalance`，在前端环境下需要注意：
+  - 避免在浏览器中直接对 `https://rpc.mainnet.near.org` 打大量并发请求，以免触发限流或 CORS 封禁。
+  - 可以通过「有限并发 + 简单缓存」降低 RPC 压力，或者将 NEAR RPC 调用下沉到后端服务。
